@@ -1,0 +1,52 @@
+using System;
+class Program 
+{
+  public struct MyTimeSpan
+  {
+      int hour, minute;
+      public MyTimeSpan(int hours, int minutes)
+      {
+          hour = hours; minute = minutes;
+      }
+      public void print() => Console.WriteLine("{0} {1}", hour, minute);
+  }
+  static void Main() 
+  {
+      Task1();
+      Console.WriteLine();
+      Task2();
+      Convert.ToInt16
+      Task3();
+  }
+  public static void Task1()
+  {
+      int a = int.Parse(Console.ReadLine());
+      int b = int.Parse(Console.ReadLine());
+      string a1 = a.ToString(), b1 = b.ToString();
+      char tmp = ' ';
+      for(int i = 0; i < b1.Length; i++)
+        if(a1.Contains(b1[i])) { tmp = b1[i]; break; }
+      for(int i = 0; i < a1.Length; i++) 
+        if(a1[i] == tmp) Console.Write(tmp + " ");
+  }
+  public static void Task2()
+  {
+    int number = int.Parse(Console.ReadLine());
+    int count = 0;    
+    while (number > 1)
+    {
+        if (number % 2 == 0) number /= 2;
+        else number = number * 3 + 1;
+        count++;
+    }
+    Console.WriteLine($"Количество необходимых действий над числом - {count}"); 
+  }
+  public static void Task3()
+  {
+    int n = int.Parse(Console.ReadLine());
+    float minutes = (1 + n) * 5.3f;
+    int hours = 12 + n;
+    MyTimeSpan time = new MyTimeSpan(hours, Convert.ToInt32(Math.Ceiling(minutes)));
+    time.print();
+  }
+}
