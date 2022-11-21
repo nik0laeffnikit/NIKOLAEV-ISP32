@@ -1,0 +1,77 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class HelloWorld 
+{
+  static void Main() 
+  {
+      Task4();
+  }
+  
+  static void Task1()
+  {
+      string[] a = Console.ReadLine().Split(" ");
+      foreach(var c in a) Console.WriteLine(c);
+  }
+  
+  static void Task2()
+  {
+      List<char> a = new List<char>(), b = new List<char>();
+      a.AddRange(Console.ReadLine().ToCharArray());
+      b.AddRange(Console.ReadLine().ToCharArray());
+      for(int i = 0; i < a.Count; i++)
+      {
+          for(int j = 0; j < a.Count; j++)
+          {
+              if(i == j) continue;
+              if(a[i] == a[j])
+              {
+                  a.RemoveAll(c => c == a[i]);
+              }
+          }
+      }
+      for(int i = 0; i < b.Count; i++)
+      {
+          if(a.Contains(b[i])) a.Remove(b[i]);
+      }
+      foreach(var c in a) Console.WriteLine(c);
+  }
+  
+  static void Task3()
+  {
+      List<char> a = new List<char>();
+      a.AddRange(Console.ReadLine().ToCharArray());
+      int min = 10, max = -1; 
+
+      for(int i = 0; i < a.Count; i++)
+      {
+          if((int.Parse(a[i].ToString())) > max)
+              max = int.Parse(a[i].ToString());
+          if((int.Parse(a[i].ToString())) < min)
+              min = int.Parse(a[i].ToString());
+      }
+      a.Insert(0, Convert.ToChar(min.ToString()));
+      a.Insert(1, Convert.ToChar(max.ToString()));
+      a.Reverse();
+      foreach(var c in a) Console.Write(c);
+  }
+  
+  static void Task4()
+  {
+      int[] a = Console.ReadLine().Split(" ").Select(s => Convert.ToInt32(s)).ToArray();
+      for (int i = 0; i < a.Length; i++)
+      {
+        for (int j = i + 1; j < a.Length; j++)
+        {
+            if (a[i] > a[j])
+            {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }                   
+        }            
+      }
+      foreach(var c in a) Console.Write(c + " ");
+  }
+}
