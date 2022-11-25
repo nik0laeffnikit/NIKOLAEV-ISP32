@@ -1,0 +1,81 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class HelloWorld 
+{
+  static void Main() 
+  {
+      Console.WriteLine(Task1(Console.ReadLine()));
+      int startValue = int.Parse(Console.ReadLine()), endValue = int.Parse(Console.ReadLine());
+      PrintSum(GetCubes(startValue, endValue));
+      int[] arr = Console.ReadLine().Split(" ").Select(s => Convert.ToInt32(s)).ToArray();
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class HelloWorld 
+{
+  static void Main() 
+  {
+      //Console.WriteLine(Task1(Console.ReadLine()));
+      //int startValue = int.Parse(Console.ReadLine()), endValue = int.Parse(Console.ReadLine());
+      //PrintSum(GetCubes(startValue, endValue));
+      //int[] arr = Console.ReadLine().Split(" ").Select(s => Convert.ToInt32(s)).ToArray();
+      //opposite(arr);
+      VasyaStyle(17);
+  }
+  
+  public static string Task1(string s)
+  {
+      if(s.Contains('e')) return "В тексте есть английская \"e\"";
+      else return "В тексте нет английской \"e\"";
+  }
+  
+  public static void PrintSum(int[] mass)
+  {
+      Console.Write(mass.Sum());
+  }
+  
+  public static int[] GetCubes(int start, int end)
+  {
+      int[] forReturn = new int[end - start + 1];
+      for(int i = 0; i < forReturn.Length; i++) forReturn[i] = (int)Math.Pow(start + i, 3);
+      return forReturn;
+  }
+  
+  delegate void Opposite(int[] originalMass);
+  
+  static Opposite opposite = originalMass => 
+  { 
+      foreach(var s in originalMass) Console.Write("{0} ", s * (-1)); 
+  };
+  
+  static void VasyaStyle(int value)
+  {
+      string numbers = "237";
+      string temp = "222";
+      for(int i = 0; i < 3; i++)
+      {
+          for(int j = 0; j < 3; j++)
+          {
+              for(int s = 0; s < 3; s++)
+              {
+                  if(int.Parse(numbers[i].ToString()) * 
+                    int.Parse(numbers[j].ToString()) + int.Parse(numbers[s].ToString()) == value)
+                  {
+                      if(temp[0] == numbers[j] && temp[1] == numbers[i] && temp[2] == numbers[s])
+                        {
+                            continue;
+                        }
+                      else
+                      {
+                            temp = (numbers[i] + numbers[j] + numbers[s]).ToString();
+                            Console.WriteLine($"{numbers[i]} * {numbers[j]} + {numbers[s]}");
+                      }
+                  }
+              }
+          }
+      }
+  }
+  }
