@@ -6,18 +6,6 @@ class HelloWorld
 {
   static void Main() 
   {
-      Console.WriteLine(Task1(Console.ReadLine()));
-      int startValue = int.Parse(Console.ReadLine()), endValue = int.Parse(Console.ReadLine());
-      PrintSum(GetCubes(startValue, endValue));
-      int[] arr = Console.ReadLine().Split(" ").Select(s => Convert.ToInt32(s)).ToArray();
-using System;
-using System.Linq;
-using System.Collections.Generic;
-
-class HelloWorld 
-{
-  static void Main() 
-  {
       //Console.WriteLine(Task1(Console.ReadLine()));
       //int startValue = int.Parse(Console.ReadLine()), endValue = int.Parse(Console.ReadLine());
       //PrintSum(GetCubes(startValue, endValue));
