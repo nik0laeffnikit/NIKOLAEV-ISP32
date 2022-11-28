@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+class Program 
+{
+    static void Main() 
+    {
+        //Task1();
+        //List<int> forTask2 = new List<int>(Task2(int.Parse(Console.ReadLine())));
+        //foreach(int a in forTask2) Console.Write(a + " ");
+        //Task3();
+    }
+    
+    static void Task1()
+    {
+        List<char> text = new List<char>(Console.ReadLine().ToCharArray());
+        Console.Write(text.IndexOf('Q'));
+    }
+    
+    static List<int> Task2(int firstNumber)
+    {
+        List<int> syracuseNumbers = new List<int>() { firstNumber };
+        while (firstNumber != 1)
+        {
+            firstNumber = firstNumber % 2 == 0 ? firstNumber /= 2 : firstNumber = firstNumber * 3 + 1;
+            syracuseNumbers.Add(firstNumber);
+        }
+        return syracuseNumbers;
+    }
+    
+    static void Task3()
+    {
+        List<string> text = new List<string>(Console.ReadLine().Split(' '));
+        text.RemoveAll(item => item.Contains("1"));
+        foreach(string s in text) Console.Write(s + " ");
+    }
+}
