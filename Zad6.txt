@@ -1,0 +1,121 @@
+using System;
+
+class Sequence
+{
+    public Sequence(int end)
+    {
+        for(int i = 0; i <= end; ++i)
+        {
+            Console.Write(i + " ");
+        }
+    }
+    
+    public Sequence(int start, int end)
+    {
+        for(int i = start; i <= end; ++i)
+        {
+            Console.Write(i + " ");
+        }
+    }
+    
+    public Sequence(char end)
+    {
+        for(int i = 97; i <= (int)end; ++i)
+        {
+            Console.Write((char)i + " ");
+        }
+    }
+    
+    public Sequence(char start, char end)
+    {
+        for(int i = (int)start; i <= (int)end; ++i)
+        {
+            Console.Write((char)i + " ");
+        }
+    }
+}
+
+public class Money
+{
+    public int roubles, kopecks;
+    
+    public Money() {}
+    
+    public Money(int value, int value1)
+    {
+        if(value < 0 || value1 < 0)
+        {
+            Console.Write("Не может быть отрицательным!");
+            return;
+        }
+        roubles += value;
+        kopecks += value1 % 100;
+        roubles += value1 / 100;
+    }
+    
+    public Money(string value, string currency)
+    {
+        if(int.Parse(value) < 0) 
+        {
+            Console.Write("Не может быть отрицательным!");
+            return;
+        } 
+        switch (currency)
+        {
+            case "р.":
+                roubles += int.Parse(value);
+                break;
+            default:
+                kopecks += int.Parse(value) % 100;
+                roubles += int.Parse(value) / 100;
+                break;
+        }
+            
+    }
+    public Money(string value, string currency, string value1, string currecncy1)
+    {
+        if(int.Parse(value) < 0 || int.Parse(value1) < 0) 
+        {
+            Console.Write("Не может быть отрицательным!");
+            return;
+        }
+        if(currency == "коп.")
+        {
+            Console.Write("Копейки и рубли перепутаны местами!");
+            return;
+        }
+        roubles += int.Parse(value);
+        kopecks += int.Parse(value1) % 100;
+        roubles += int.Parse(value1) / 100;
+    }
+    
+    public void PrintTransferCost(float rate)
+    {
+        kopecks += roubles * 100;
+        kopecks += (int)(kopecks * rate);
+        roubles = kopecks / 100;
+        kopecks = kopecks % 100;
+        Console.Write(roubles + " р. " + kopecks + " коп.");
+    }
+}
+
+class Program 
+{
+    static Sequence sequenceObj = new Sequence('a', 'z');
+    
+    public static Money Sum(Money a, Money b) 
+    {
+        return new Money(a.roubles + b.roubles, a.kopecks + b.kopecks);
+    }
+    
+    public static Money Difference(Money a, Money b) 
+    { 
+        return new Money(a.roubles - b.roubles, a.kopecks - b.kopecks);
+    }
+    
+    static void Main() 
+    {
+        Money c = Sum(new Money(10, 15), new Money(0, 150));
+        c.PrintTransferCost(0);
+    }
+}
